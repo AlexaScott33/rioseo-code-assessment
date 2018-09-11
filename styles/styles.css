@@ -1,1 +1,5 @@
 /* CUSTOM STYLES HERE */
+
+li {
+    list-style: none;
+}
