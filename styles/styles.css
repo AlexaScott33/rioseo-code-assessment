@@ -1,5 +1,62 @@
 /* CUSTOM STYLES HERE */
 
+/* HEADER STYLES */
+.header-container {
+    display: inline-block;
+}
+
+
+
+/* NAV STYLES */
+
+.nav-container {
+    float: right;
+}
+
+.nav-link {
+    display: inline-block;
+}
+
+/* unvisited link */
+a:link {
+    color: grey;
+}
+
+/* visited link */
+a:visited {
+    color: grey;
+}
+
+/* mouse over link */
+a:hover {
+    color: black;
+}
+
+/* selected link */
+a:active {
+    color: black;
+}
+
+
+
+/* MAIN STYLES */
+
+.initial-grey-display {
+    background-color:lightgray;
+    color: black;
+    text-align: center;
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+
+.map {
+    display: none;
+    float: right;
+    width: 50%;
+    height: 100vh;
+}
+
 li {
     list-style: none;
 }

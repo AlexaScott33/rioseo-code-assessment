@@ -11,7 +11,8 @@ $(document).ready(function() {
     render(response);
     // console.log(response);
   });
-
+    
+//   handleDirectionClick();
   // DEMO
   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
 });
@@ -62,12 +63,35 @@ function generateTruckLocatorList(list) {
         State: ${truck.state}
         Zip: ${truck.postal_code}
         ${displayStatusMessage}
-        <button>Directions</button>
+        <button 
+            data-latitude="${truck.latitude}"
+            data-longitude="${truck.longitude}"
+            class="get-direction"
+            >Directions
+        </button>
         <button>More Info</button>
       </li>`
     );
   });
   const newList = listItems.join('');
-  console.log(newList);
+  //   console.log(newList);
   return newList;
 }
+
+function handleDirectionClick(latitude, longitude) {
+  $('.get-direction').on('click', function() {
+    // event.preventDefault();
+    console.log('clicking');
+    let $this = $(this);
+
+    console.log($this.attr('data-latitude'));
+    console.log($this.attr('data-longitutde'));
+  });
+}
+
+
+
+
+// function bindEventListeners() {
+//   handleDirectionClick();
+// }

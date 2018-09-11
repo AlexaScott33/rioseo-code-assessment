@@ -10,15 +10,29 @@
 
     </head>
     <body>
-        <header>
-            <img class="rioseo-logo" src="assets/rioseo-logo.png">
+        <header class="header-container">
+            <img class="rioseo-desktop-logo" src="assets/rioseo-logo.png">
         </header>
-        <!-- DEMO -->
-        <div class="map-wrap">
-            <img class="map">
-        </div>
 
-        <ul class="truck-locator-list"></ul>
+        <nav class="nav-container">
+            <a class="nav-link" href="#">Menu</a>
+            <a class="nav-link" href="#"><img class="nav-link-img" src="assets/location-icon.png">Truck Locator</a>
+        </nav>
+
+        <!-- DEMO -->
+        <main class="main-container">
+            <div class="map-wrap">
+                <img class="map">
+                <div class="initial-grey-display">Click a location card to load a map</div>
+            </div>
+
+            <div class="list-wrap">
+                <!-- <h3>Found 3 Taco Trucks in 92121</h3> -->
+                <ul class="truck-locator-list">
+                    
+                </ul>
+            </div>
+        </main>
         
         <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
