@@ -1,5 +1,9 @@
 /* CUSTOM STYLES HERE */
 
+.hidden {
+    display: none;
+}
+
 /* HEADER STYLES */
 .header-container {
     display: inline-block;
@@ -51,7 +55,6 @@ a:active {
 }
 
 .map {
-    display: none;
     float: right;
     width: 50%;
     height: 100vh;
