@@ -56,18 +56,19 @@ function generateTruckLocatorList(list) {
       displayStatusMessage = 'Closed';
     }
     return (
-      `<li key=${truck.id} class="truck-locator-element">
+      `<li 
+          key=${truck.id} 
+          class="truck-locator-element"
+          data-latitude="${truck.latitude}"
+          data-longitude="${truck.longitude}">
         Name: ${truck.name}
         Address: ${truck.address}
         City: ${truck.city} 
         State: ${truck.state}
         Zip: ${truck.postal_code}
         ${displayStatusMessage}
-        <button 
-            data-latitude="${truck.latitude}"
-            data-longitude="${truck.longitude}"
-            class="get-direction"
-            >Directions
+        <button
+          class="get-direction">Directions
         </button>
         <button>More Info</button>
       </li>`
@@ -85,7 +86,7 @@ function generateTruckLocatorList(list) {
 // remove the hidden class from map
 // add hidden class to initial-grey-display div
 function handleCardClick(latitude, longitude) {
-  $('.truck-locator-element').on('click', function(event) {
+  $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
     event.preventDefault();
     console.log('clicking');
 
@@ -96,7 +97,6 @@ function handleCardClick(latitude, longitude) {
     console.log(truckLatitude);
     console.log(truckLongitude);
 
-    // need to test static map with coordinates - loading demo map for now
     // $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259`);
     $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C${truckLatitude},${truckLongitude}`);
     $('.map').removeClass('hidden');
@@ -121,3 +121,41 @@ function handleDirectionClick(latitude, longitude) {
 function bindEventListeners() {
   handleCardClick();
 }
+
+
+
+
+// hard coded data for when site goes down
+// <li key="1" 
+//                         class="truck-locator-element"
+//                         data-latitude="41.0938"
+//                         data-longitude="-85.0707">
+//                             Name: Taco Truck 1
+//                             Address: 8000 Some Street
+//                             City: San Diego
+//                             State: CA
+//                             Zip: 92121
+//                             Open until 9pm
+//                             <button 
+//                                 class="get-direction"
+//                                 >Directions
+//                             </button>
+//                             <button class="get-more-info">More Info</button>
+//                     </li>
+
+//                     <li key="2" 
+//                     class="truck-locator-element"
+//                     data-latitude="32.823943"
+//                     data-longitude="-117.150259">
+//                         Name: Taco Truck 2
+//                         Address: 9000 Some Street
+//                         City: San Diego
+//                         State: CA
+//                         Zip: 92121
+//                         Open until 10pm
+//                         <button 
+//                             class="get-direction"
+//                             >Directions
+//                         </button>
+//                         <button class="get-more-info">More Info</button>
+//                 </li>
