@@ -14,7 +14,7 @@ $(document).ready(function() {
     
   bindEventListeners();
   // DEMO
-  $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
+//   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
 });
 
 function render(res) {
@@ -89,6 +89,18 @@ function handleCardClick(latitude, longitude) {
   $('.truck-locator-element').on('click', function(event) {
     event.preventDefault();
     console.log('clicking');
+
+    let $this = $(this);
+
+    let truckLatitude = $this.attr('data-latitude');
+    let truckLongitude = $this.attr('data-longitude');
+    // console.log(truckLatitude);
+    // console.log(truckLongitude);
+
+    // $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259`);
+    $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
+    $('.map').removeClass('hidden');
+    $('.initial-grey-display').addClass('hidden');
   });
 }
 
