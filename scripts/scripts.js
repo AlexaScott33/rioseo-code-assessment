@@ -8,7 +8,6 @@ $(document).ready(function() {
     dataType: 'json'
   }).success(function (response) {
     // work with response data here
-    // $('.truck-locator-list').html(response);
     render(response);
     // console.log(response);
   });
@@ -23,12 +22,51 @@ function render(res) {
 }
 
 function generateTruckLocatorList(list) {
-    const currDate = new Date();
-    console.log(currDate);
-  const listItems = list.map(truck => `
-      <li key=${truck.id} class="truck-locator-element">
-        ${truck.name}
-      </li>`);
+  const weekArr = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
+  const currDate = new Date();
+  const day = currDate.getDay();
+  let currDay;
+  let displayStatusMessage;
+  let opensAt;
+  let closesAt;
+  //   const time = currDate.getTime();
+  //   console.log(time);
+
+  console.log(day);
+  console.log(currDate);
+
+  // set currDay to the element at index in weekArr
+  for(let i=0; i < weekArr.length; i++) {
+    if (day === i) {
+      currDay = weekArr[i];
+    }
+  }
+  console.log(`Today is ${currDay}`);
+
+  const listItems = list.map(truck => {
+    // if (truck[`${currDay}_open`]) {
+    //   opensAt = truck[`${currDay}_open`];
+    //   console.log(`On ${currDay} this truck with id: ${truck.id} is opened at ${opensAt}`);
+    // }
+    if (truck[`${currDay}_close`]) {
+      closesAt = truck[`${currDay}_close`];
+      displayStatusMessage = `Open today until ${closesAt}`;
+    } else {
+      displayStatusMessage = 'Closed';
+    }
+    return (
+      `<li key=${truck.id} class="truck-locator-element">
+        Name: ${truck.name}
+        Address: ${truck.address}
+        City: ${truck.city} 
+        State: ${truck.state}
+        Zip: ${truck.postal_code}
+        ${displayStatusMessage}
+        <button>Directions</button>
+        <button>More Info</button>
+      </li>`
+    );
+  });
   const newList = listItems.join('');
   console.log(newList);
   return newList;
