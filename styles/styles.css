@@ -45,6 +45,10 @@ a:active {
 
 /* MAIN STYLES */
 
+.main-container {
+    margin-top: 50px;
+}
+
 .initial-grey-display {
     background-color:lightgray;
     color: black;
@@ -63,3 +67,12 @@ a:active {
 li {
     list-style: none;
 }
+
+.truck-locator-element {
+    border: 1px solid black;
+}
+
+.truck-locator-element:hover {
+    cursor: pointer;
+}
+

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title></title>
+        <title>Rio SEO Truck Locator</title>
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
@@ -20,7 +20,6 @@
             <a class="nav-link" href="#"><img class="nav-link-img" src="assets/location-icon.png">Truck Locator</a>
         </nav>
 
-        <!-- DEMO -->
         <main class="main-container">
             <div class="map-wrap">
                 <img class="map hidden">
@@ -30,7 +29,22 @@
             <div class="list-wrap">
                 <!-- <h3>Found 3 Taco Trucks in 92121</h3> -->
                 <ul class="truck-locator-list">
-
+                    <li key="1" 
+                        class="truck-locator-element"
+                        data-latitude="41.0938"
+                        data-longitude="-85.0707">
+                            Name: Taco Truck 1
+                            Address: 8000 Some Street
+                            City: San Diego
+                            State: CA
+                            Zip: 92121
+                            Open until 9pm
+                            <button 
+                                class="get-direction"
+                                >Directions
+                            </button>
+                            <button class="get-more-info">More Info</button>
+                    </li>
                 </ul>
             </div>
         </main>

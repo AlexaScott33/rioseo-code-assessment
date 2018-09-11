@@ -12,7 +12,7 @@ $(document).ready(function() {
     // console.log(response);
   });
     
-//   handleDirectionClick();
+  bindEventListeners();
   // DEMO
   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
 });
@@ -78,6 +78,21 @@ function generateTruckLocatorList(list) {
   return newList;
 }
 
+// this function will:
+// listen for a click of the location card
+// get the lat/long points for that truck
+// place the lat/long into google static map
+// remove the hidden class from map
+// add hidden class to initial-grey-display div
+
+function handleCardClick(latitude, longitude) {
+  $('.truck-locator-element').on('click', function(event) {
+    event.preventDefault();
+    console.log('clicking');
+  });
+}
+
+
 function handleDirectionClick(latitude, longitude) {
   $('.get-direction').on('click', function() {
     // event.preventDefault();
@@ -91,7 +106,6 @@ function handleDirectionClick(latitude, longitude) {
 
 
 
-
-// function bindEventListeners() {
-//   handleDirectionClick();
-// }
+function bindEventListeners() {
+  handleCardClick();
+}
