@@ -14,7 +14,7 @@ $(document).ready(function() {
     
   bindEventListeners();
   // DEMO
-//   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
+  //   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
 });
 
 function render(res) {
@@ -84,7 +84,6 @@ function generateTruckLocatorList(list) {
 // place the lat/long into google static map
 // remove the hidden class from map
 // add hidden class to initial-grey-display div
-
 function handleCardClick(latitude, longitude) {
   $('.truck-locator-element').on('click', function(event) {
     event.preventDefault();
@@ -94,11 +93,12 @@ function handleCardClick(latitude, longitude) {
 
     let truckLatitude = $this.attr('data-latitude');
     let truckLongitude = $this.attr('data-longitude');
-    // console.log(truckLatitude);
-    // console.log(truckLongitude);
+    console.log(truckLatitude);
+    console.log(truckLongitude);
 
+    // need to test static map with coordinates - loading demo map for now
     // $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259`);
-    $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
+    $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C${truckLatitude},${truckLongitude}`);
     $('.map').removeClass('hidden');
     $('.initial-grey-display').addClass('hidden');
   });
