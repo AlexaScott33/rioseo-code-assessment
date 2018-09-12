@@ -71,7 +71,7 @@ function generateTruckLocatorList(list) {
           data-address="${truck.address}"
           data-city="${truck.city}"
           data-state="${truck.state}"
-          data-postal_code="${truck.state}"
+          data-postal-code="${truck.postal_code}"
           data-monday-open="${truck.monday_open}"
           data-monday-close="${truck.monday_close}"
           data-tuesday-open="${truck.tuesday_open}"
@@ -86,12 +86,12 @@ function generateTruckLocatorList(list) {
           data-saturday-close="${truck.saturday_close}"
           data-sunday-open="${truck.sunday_open}"
           data-sunday-close="${truck.sunday_close}"
-          >More Info</button>
+          >More Info
+        </button>
       </li>`
     );
   });
   const newList = listItems.join('');
-  //   console.log(newList);
   return newList;
 }
 
@@ -107,12 +107,11 @@ function handleCardClick() {
     console.log('clicking li');
     let $this = $(this);
 
-    let truckLatitude = $this.attr('data-latitude');
-    let truckLongitude = $this.attr('data-longitude');
+    let truckLatitude = $this.data('latitude');
+    let truckLongitude = $this.data('longitude');
     console.log(truckLatitude);
     console.log(truckLongitude);
 
-    // $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259`);
     $('.map').attr('src', `https://maps.googleapis.com/maps/api/staticmap?center=${truckLatitude},${truckLongitude}&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C${truckLatitude},${truckLongitude}`);
     $('.map').removeClass('hidden');
     $('.initial-grey-display').addClass('hidden');
@@ -120,7 +119,10 @@ function handleCardClick() {
 }
 
 // this function will:
-// 
+// listen for a click of the More Info button
+// get the all the data for specific truck
+// set data to respected HTML element
+// remove the hidden class from .more-info-wrap
 function handleMoreInfoClick() {
   $('.truck-locator-list').on('click', '.get-more-info', function(event) {
     event.preventDefault();
@@ -129,7 +131,7 @@ function handleMoreInfoClick() {
 
     let $this = $(this);
 
-    const address = `${$this.data('address')} <br/> ${$this.data('city')}, ${$this.data('state')} ${$this.data('postal_code')}`;
+    const address = `${$this.data('address')} <br/> ${$this.data('city')}, ${$this.data('state')} ${$this.data('postal-code')}`;
     const mondaySched = `${$this.data('monday-open')} - ${$this.data('monday-close')}`;
     const tuesdaySched = `${$this.data('tuesday-open')} - ${$this.data('tuesday-close')}`;
     const wednesdaySched = `${$this.data('wednesday-open')} - ${$this.data('wednesday-close')}`;
@@ -137,6 +139,7 @@ function handleMoreInfoClick() {
     const fridaySched = `${$this.data('friday-open')} - ${$this.data('friday-close')}`;
     const saturdaySched = `${$this.data('saturday-open')} - ${$this.data('saturday-close')}`;
     const sundaySched = `${$this.data('sunday-open')} - ${$this.data('sunday-close')}`;
+
     $('.truck-name').html($this.data('name'));
     $('.truck-address').html(address);
     $('.truck-phone').html('123-456-7890');
@@ -151,10 +154,12 @@ function handleMoreInfoClick() {
     $('.sunday span' ).html(sundaySched);
 
     $('.more-info-wrap').removeClass('hidden');
-
   });
 }
 
+// this function will:
+// listen for a click of the close button
+// add hidden class to .more-info-wrap
 function handleMoreInfoCardClose() {
   $('.close-card').on('click', function(event) {
     event.preventDefault();
@@ -162,7 +167,6 @@ function handleMoreInfoCardClose() {
     $('.more-info-wrap').addClass('hidden');
   });
 }
-
 
 
 function handleDirectionClick(latitude, longitude) {
