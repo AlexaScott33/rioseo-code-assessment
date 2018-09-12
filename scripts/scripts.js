@@ -55,16 +55,19 @@ function generateTruckLocatorList(list) {
           class="truck-locator-element"
           data-latitude="${truck.latitude}"
           data-longitude="${truck.longitude}">
-        Name: ${truck.name}
-        Address: ${truck.address}
-        City: ${truck.city} 
-        State: ${truck.state}
-        Zip: ${truck.postal_code}
-        ${displayStatusMessage}
+          Name: ${truck.name}
+          Address: ${truck.address}
+          City: ${truck.city} 
+          State: ${truck.state}
+          Zip: ${truck.postal_code}
+          ${displayStatusMessage}
         <img src="assets/phone-icon.png">123-456-7890
-        <button
-          class="get-directions">Directions
-        </button>
+        <a
+          class="get-directions" href="" target="_blank"
+          data-latitude="${truck.latitude}"
+          data-longitude="${truck.longitude}"
+          >Directions
+        </a>
         <button
           class="get-more-info"
           data-name="${truck.name}"
@@ -98,12 +101,12 @@ function generateTruckLocatorList(list) {
   return newList;
 }
 
-// this function will:
-// listen for a click of the location card
-// get the lat/long points for that truck
-// place the lat/long into google static map
-// remove the hidden class from map
-// add hidden class to initial-grey-display div
+// this function:
+// listens for a click of the location card
+// gets the lat/long points for that truck
+// places the lat/long into google static map
+// removes the hidden class from map
+// adds hidden class to initial-grey-display div
 function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
     event.preventDefault();
@@ -122,16 +125,16 @@ function handleCardClick() {
   });
 }
 
-// this function will:
-// listen for a click of the More Info button
-// get the all the data for specific truck
-// set data to respected HTML element
-// remove the hidden class from .more-info-wrap
+// this function:
+// listens for a click of the more info button
+// gets the all the data for that specific truck
+// sets data to respected html element
+// removes the hidden class from .more-info-wrap
 function handleMoreInfoClick() {
   $('.truck-locator-list').on('click', '.get-more-info', function(event) {
     event.preventDefault();
     event.stopPropagation();
-    console.log('clicking more info!!');
+    console.log('clicking more info button');
 
     let $this = $(this);
 
@@ -166,9 +169,9 @@ function handleMoreInfoClick() {
   });
 }
 
-// this function will:
-// listen for a click of the close button
-// add hidden class to .more-info-wrap
+// this function:
+// listens for a click of the close button
+// adds hidden class to .more-info-wrap
 function handleMoreInfoCardClose() {
   $('.close-card').on('click', function(event) {
     event.preventDefault();
@@ -177,15 +180,25 @@ function handleMoreInfoCardClose() {
   });
 }
 
+// this function:
+// listens for a click of the directions link
+// gets the lat/long points for that truck
+// 
+function handleDirectionClick() {
+  $('.truck-locator-list').on('click', '.get-directions', function(event) {
+    event.preventDefault();
+    event.stopPropagation();
+    console.log('clicking Directions button');
 
-function handleDirectionClick(latitude, longitude) {
-  $('.get-direction').on('click', function() {
-    // event.preventDefault();
-    console.log('clicking');
     let $this = $(this);
 
-    console.log($this.attr('data-latitude'));
-    console.log($this.attr('data-longitutde'));
+    const truckLatitude = $this.data('latitude');
+    const truckLongitude = $this.data('longitude');
+    console.log(truckLatitude);
+    console.log(truckLongitude);
+
+    $('.get-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
+
   });
 }
 
@@ -195,6 +208,7 @@ function bindEventListeners() {
   handleCardClick();
   handleMoreInfoClick();
   handleMoreInfoCardClose();
+  handleDirectionClick();
 }
 
 
