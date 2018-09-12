@@ -28,13 +28,8 @@ function generateTruckLocatorList(list) {
   const day = currDate.getDay();
   let currDay;
   let displayStatusMessage;
-  let opensAt;
   let closesAt;
-  //   const time = currDate.getTime();
-  //   console.log(time);
 
-  console.log(day);
-  console.log(currDate);
 
   // set currDay to the element at index in weekArr
   for(let i=0; i < weekArr.length; i++) {
@@ -42,7 +37,6 @@ function generateTruckLocatorList(list) {
       currDay = weekArr[i];
     }
   }
-  console.log(`Today is ${currDay}`);
 
   const listItems = list.map(truck => {
     // if (truck[`${currDay}_open`]) {
@@ -67,10 +61,32 @@ function generateTruckLocatorList(list) {
         State: ${truck.state}
         Zip: ${truck.postal_code}
         ${displayStatusMessage}
+        <img src="assets/phone-icon.png">123-456-7890
         <button
-          class="get-direction">Directions
+          class="get-directions">Directions
         </button>
-        <button>More Info</button>
+        <button
+          class="get-more-info"
+          data-name="${truck.name}"
+          data-address="${truck.address}"
+          data-city="${truck.city}"
+          data-state="${truck.state}"
+          data-postal_code="${truck.state}"
+          data-monday-open="${truck.monday_open}"
+          data-monday-close="${truck.monday_close}"
+          data-tuesday-open="${truck.tuesday_open}"
+          data-tuesday-close="${truck.tuesday_close}"
+          data-wednesday-open="${truck.wednesday_open}"
+          data-wednesday-close="${truck.wednesday_close}"
+          data-thursday-open="${truck.thursday_open}"
+          data-thursday-close="${truck.thursday_close}"
+          data-friday-open="${truck.friday_open}"
+          data-friday-close="${truck.friday_close}"
+          data-saturday-open="${truck.saturday_open}"
+          data-saturday-close="${truck.saturday_close}"
+          data-sunday-open="${truck.sunday_open}"
+          data-sunday-close="${truck.sunday_close}"
+          >More Info</button>
       </li>`
     );
   });
@@ -85,10 +101,9 @@ function generateTruckLocatorList(list) {
 // place the lat/long into google static map
 // remove the hidden class from map
 // add hidden class to initial-grey-display div
-function handleCardClick(latitude, longitude) {
+function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
     event.preventDefault();
-    console.log('clicking');
 
     let $this = $(this);
 
@@ -103,6 +118,20 @@ function handleCardClick(latitude, longitude) {
     $('.initial-grey-display').addClass('hidden');
   });
 }
+
+// this function will:
+// 
+function handleMoreInfoClick() {
+  $('.truck-locator-list').on('click', '.get-more-info', function(event) {
+    event.preventDefault();
+    console.log('clicking more info!!');
+
+    let $this = $(this);
+
+    console.log($this.attr('data-name'));
+  });
+}
+
 
 
 function handleDirectionClick(latitude, longitude) {
@@ -120,6 +149,7 @@ function handleDirectionClick(latitude, longitude) {
 
 function bindEventListeners() {
   handleCardClick();
+  handleMoreInfoClick();
 }
 
 
@@ -159,3 +189,6 @@ function bindEventListeners() {
 //                         </button>
 //                         <button class="get-more-info">More Info</button>
 //                 </li>
+
+
+// https://www.google.com/maps/place/8563+Glenhaven+St,+San+Diego,+CA+92123/@32.8054529,-117.1452966,17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d32.8054484!4d-117.1431079
