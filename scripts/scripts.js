@@ -68,10 +68,13 @@ function generateTruckLocatorList(list) {
         <button
           class="get-more-info"
           data-name="${truck.name}"
+          data-url="${truck.url}"
           data-address="${truck.address}"
           data-city="${truck.city}"
           data-state="${truck.state}"
           data-postal-code="${truck.postal_code}"
+          data-latitude="${truck.latitude}"
+          data-longitude="${truck.longitude}"
           data-monday-open="${truck.monday_open}"
           data-monday-close="${truck.monday_close}"
           data-tuesday-open="${truck.tuesday_open}"
@@ -105,10 +108,11 @@ function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
     event.preventDefault();
     console.log('clicking li');
+
     let $this = $(this);
 
-    let truckLatitude = $this.data('latitude');
-    let truckLongitude = $this.data('longitude');
+    const truckLatitude = $this.data('latitude');
+    const truckLongitude = $this.data('longitude');
     console.log(truckLatitude);
     console.log(truckLongitude);
 
@@ -131,6 +135,10 @@ function handleMoreInfoClick() {
 
     let $this = $(this);
 
+    const truckLatitude = $this.data('latitude');
+    const truckLongitude = $this.data('longitude');
+    const truckUrl = $this.data('url');
+    console.log(truckUrl);
     const address = `${$this.data('address')} <br/> ${$this.data('city')}, ${$this.data('state')} ${$this.data('postal-code')}`;
     const mondaySched = `${$this.data('monday-open')} - ${$this.data('monday-close')}`;
     const tuesdaySched = `${$this.data('tuesday-open')} - ${$this.data('tuesday-close')}`;
@@ -144,7 +152,7 @@ function handleMoreInfoClick() {
     $('.truck-address').html(address);
     $('.truck-phone').html('123-456-7890');
     //get lat and long
-    $('.truck-directions').attr('href', 'https://www.google.com/maps/place/@32.8054529,-117.1452966,17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d32.8054484!4d-117.1431079');
+    $('.truck-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
     $('.monday span' ).html(mondaySched);
     $('.tuesday span' ).html(tuesdaySched);
     $('.wednesday span' ).html(wednesdaySched);
@@ -152,6 +160,7 @@ function handleMoreInfoClick() {
     $('.friday span' ).html(fridaySched);
     $('.saturday span' ).html(saturdaySched);
     $('.sunday span' ).html(sundaySched);
+    $('.view-full-details').attr('href', `${truckUrl}`);
 
     $('.more-info-wrap').removeClass('hidden');
   });
