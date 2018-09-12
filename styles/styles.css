@@ -58,11 +58,19 @@ a:active {
     height: 100vh;
 }
 
+/* .map-wrap {
+    position: relative;
+} */
+
 .map {
     float: right;
     width: 50%;
     height: 100vh;
 }
+
+/* .more-info-card {
+    position: absolute;
+} */
 
 li {
     list-style: none;
