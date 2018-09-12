@@ -22,22 +22,22 @@
 }
 
 /* unvisited link */
-a:link {
+.nav-link:link {
     color: grey;
 }
 
 /* visited link */
-a:visited {
+.nav-link:visited {
     color: grey;
 }
 
 /* mouse over link */
-a:hover {
+.nav-link:hover {
     color: black;
 }
 
 /* selected link */
-a:active {
+.nav-link:active {
     color: black;
 }
 
