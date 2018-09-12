@@ -55,13 +55,12 @@ function generateTruckLocatorList(list) {
           class="truck-locator-element"
           data-latitude="${truck.latitude}"
           data-longitude="${truck.longitude}">
-          Name: ${truck.name}
-          Address: ${truck.address}
-          City: ${truck.city} 
-          State: ${truck.state}
-          Zip: ${truck.postal_code}
-          ${displayStatusMessage}
-        <img src="assets/phone-icon.png">123-456-7890
+          ${truck.name} <br/>
+          0.5miles <br/>
+          ${truck.address} <br/>
+          ${truck.city}, ${truck.state} ${truck.postal_code} <br/>
+          ${displayStatusMessage} <br/>
+        <img src="assets/phone-icon.png">123-456-7890 <br/>
         <a
           class="get-directions" href="" target="_blank"
           data-latitude="${truck.latitude}"
