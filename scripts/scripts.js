@@ -104,7 +104,7 @@ function generateTruckLocatorList(list) {
 function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
     event.preventDefault();
-
+    console.log('clicking li');
     let $this = $(this);
 
     let truckLatitude = $this.attr('data-latitude');
@@ -124,11 +124,42 @@ function handleCardClick() {
 function handleMoreInfoClick() {
   $('.truck-locator-list').on('click', '.get-more-info', function(event) {
     event.preventDefault();
+    event.stopPropagation();
     console.log('clicking more info!!');
 
     let $this = $(this);
 
-    console.log($this.attr('data-name'));
+    const address = `${$this.data('address')} <br/> ${$this.data('city')}, ${$this.data('state')} ${$this.data('postal_code')}`;
+    const mondaySched = `${$this.data('monday-open')} - ${$this.data('monday-close')}`;
+    const tuesdaySched = `${$this.data('tuesday-open')} - ${$this.data('tuesday-close')}`;
+    const wednesdaySched = `${$this.data('wednesday-open')} - ${$this.data('wednesday-close')}`;
+    const thursdaySched = `${$this.data('thursday-open')} - ${$this.data('thursday-close')}`;
+    const fridaySched = `${$this.data('friday-open')} - ${$this.data('friday-close')}`;
+    const saturdaySched = `${$this.data('saturday-open')} - ${$this.data('saturday-close')}`;
+    const sundaySched = `${$this.data('sunday-open')} - ${$this.data('sunday-close')}`;
+    $('.truck-name').html($this.data('name'));
+    $('.truck-address').html(address);
+    $('.truck-phone').html('123-456-7890');
+    //get lat and long
+    $('.truck-directions').attr('href', 'https://www.google.com/maps/place/@32.8054529,-117.1452966,17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d32.8054484!4d-117.1431079');
+    $('.monday span' ).html(mondaySched);
+    $('.tuesday span' ).html(tuesdaySched);
+    $('.wednesday span' ).html(wednesdaySched);
+    $('.thursday span' ).html(thursdaySched);
+    $('.friday span' ).html(fridaySched);
+    $('.saturday span' ).html(saturdaySched);
+    $('.sunday span' ).html(sundaySched);
+
+    $('.more-info-wrap').removeClass('hidden');
+
+  });
+}
+
+function handleMoreInfoCardClose() {
+  $('.close-card').on('click', function(event) {
+    event.preventDefault();
+    console.log('clicking close button');
+    $('.more-info-wrap').addClass('hidden');
   });
 }
 
@@ -150,6 +181,7 @@ function handleDirectionClick(latitude, longitude) {
 function bindEventListeners() {
   handleCardClick();
   handleMoreInfoClick();
+  handleMoreInfoCardClose();
 }
 
 
