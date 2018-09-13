@@ -56,7 +56,7 @@ function generateTruckLocatorList(list) {
           data-latitude="${truck.latitude}"
           data-longitude="${truck.longitude}">
           <div class="list-header">
-            <p class="list-truck-name">${truck.name}</p>
+            <h5 class="list-truck-name">${truck.name}</h5>
             <p class="list-miles">0.5miles</p>
           </div>
           <p class="list-truck-address">${truck.address}</p>
