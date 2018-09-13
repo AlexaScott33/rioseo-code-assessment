@@ -17,11 +17,13 @@ $(document).ready(function() {
   //   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
 });
 
+//
 function render(res) {
   const storeList = generateTruckLocatorList(res);
   $('.truck-locator-list').html(storeList);
 }
 
+//
 function generateTruckLocatorList(list) {
   const weekArr = ['sunday', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday'];
   const currDate = new Date();
@@ -39,10 +41,6 @@ function generateTruckLocatorList(list) {
   }
 
   const listItems = list.map(truck => {
-    // if (truck[`${currDay}_open`]) {
-    //   opensAt = truck[`${currDay}_open`];
-    //   console.log(`On ${currDay} this truck with id: ${truck.id} is opened at ${opensAt}`);
-    // }
     if (truck[`${currDay}_close`]) {
       closesAt = truck[`${currDay}_close`];
       displayStatusMessage = `Open today until ${closesAt}`;
@@ -110,7 +108,6 @@ function generateTruckLocatorList(list) {
 // adds hidden class to initial-grey-display div
 function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
-    // event.preventDefault();
     console.log('clicking li');
 
     let $this = $(this);
@@ -142,7 +139,6 @@ function handleMoreInfoClick() {
     const truckLatitude = $this.data('latitude');
     const truckLongitude = $this.data('longitude');
     const truckUrl = $this.data('url');
-    console.log(truckUrl);
     const address = `${$this.data('address')} <br/> ${$this.data('city')}, ${$this.data('state')} ${$this.data('postal-code')}`;
     const mondaySched = `${$this.data('monday-open')} - ${$this.data('monday-close')}`;
     const tuesdaySched = `${$this.data('tuesday-open')} - ${$this.data('tuesday-close')}`;
@@ -155,10 +151,7 @@ function handleMoreInfoClick() {
     $('.truck-name').html($this.data('name'));
     $('.truck-address').html(address);
     $('.truck-phone').html('123-456-7890');
-    // https://www.google.com/maps/@32.8075071,-117.1441226,14z
     $('.truck-directions').attr('href', `https://www.google.com/maps/dir/${truckLatitude},${truckLongitude}`);
-
-    // $('.truck-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
     $('.monday .schedule' ).html(mondaySched);
     $('.tuesday .schedule' ).html(tuesdaySched);
     $('.wednesday .schedule' ).html(wednesdaySched);
