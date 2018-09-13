@@ -55,14 +55,16 @@ function generateTruckLocatorList(list) {
           class="truck-locator-element"
           data-latitude="${truck.latitude}"
           data-longitude="${truck.longitude}">
-          ${truck.name} <br/>
-          0.5miles <br/>
-          ${truck.address} <br/>
-          ${truck.city}, ${truck.state} ${truck.postal_code} <br/>
-          ${displayStatusMessage} <br/>
+          <div class="list-header">
+            <p class="list-truck-name">${truck.name}</p>
+            <p class="list-miles">0.5miles</p>
+          </div>
+          <p class="list-truck-address">${truck.address}</p>
+          <p class="list-truck-city">${truck.city}, ${truck.state} ${truck.postal_code}</p>
+          <p class="list-display-message">${displayStatusMessage}</p>
         <img src="assets/phone-icon.png">123-456-7890 <br/>
         <a
-          class="get-directions" href="" target="_blank"
+          class="get-directions" href="https://www.google.com/maps/dir/${truck.latitude},${truck.longitude}" target="_blank"
           data-latitude="${truck.latitude}"
           data-longitude="${truck.longitude}"
           >Directions
@@ -108,7 +110,7 @@ function generateTruckLocatorList(list) {
 // adds hidden class to initial-grey-display div
 function handleCardClick() {
   $('.truck-locator-list').on('click', '.truck-locator-element', function(event) {
-    event.preventDefault();
+    // event.preventDefault();
     console.log('clicking li');
 
     let $this = $(this);
@@ -153,15 +155,17 @@ function handleMoreInfoClick() {
     $('.truck-name').html($this.data('name'));
     $('.truck-address').html(address);
     $('.truck-phone').html('123-456-7890');
-    //get lat and long
-    $('.truck-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
-    $('.monday span' ).html(mondaySched);
-    $('.tuesday span' ).html(tuesdaySched);
-    $('.wednesday span' ).html(wednesdaySched);
-    $('.thursday span' ).html(thursdaySched);
-    $('.friday span' ).html(fridaySched);
-    $('.saturday span' ).html(saturdaySched);
-    $('.sunday span' ).html(sundaySched);
+    // https://www.google.com/maps/@32.8075071,-117.1441226,14z
+    $('.truck-directions').attr('href', `https://www.google.com/maps/dir/${truckLatitude},${truckLongitude}`);
+
+    // $('.truck-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
+    $('.monday .schedule' ).html(mondaySched);
+    $('.tuesday .schedule' ).html(tuesdaySched);
+    $('.wednesday .schedule' ).html(wednesdaySched);
+    $('.thursday .schedule' ).html(thursdaySched);
+    $('.friday .schedule' ).html(fridaySched);
+    $('.saturday .schedule' ).html(saturdaySched);
+    $('.sunday .schedule' ).html(sundaySched);
     $('.view-full-details').attr('href', `${truckUrl}`);
 
     $('.more-info-wrap').removeClass('hidden');
@@ -183,23 +187,23 @@ function handleMoreInfoCardClose() {
 // listens for a click of the directions link
 // gets the lat/long points for that truck
 // 
-function handleDirectionClick() {
-  $('.truck-locator-list').on('click', '.get-directions', function(event) {
-    event.preventDefault();
-    event.stopPropagation();
-    console.log('clicking Directions button');
+// function handleDirectionClick() {
+//   $('.truck-locator-list').on('click', '.get-directions', function(event) {
+//     event.preventDefault();
+//     event.stopPropagation();
+//     console.log('clicking Directions button');
 
-    let $this = $(this);
+//     let $this = $(this);
 
-    const truckLatitude = $this.data('latitude');
-    const truckLongitude = $this.data('longitude');
-    console.log(truckLatitude);
-    console.log(truckLongitude);
+//     const truckLatitude = $this.data('latitude');
+//     const truckLongitude = $this.data('longitude');
+//     console.log(truckLatitude);
+//     console.log(truckLongitude);
 
-    $('.get-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
+//     $('.get-directions').attr('href', `https://www.google.com/maps/place/@${truckLatitude},${truckLongitude},17z/data=!3m1!4b1!4m5!3m4!1s0x80dbffd923fc55c9:0xf468775abe2e618!8m2!3d${truckLatitude}!4d${truckLongitude}`);
 
-  });
-}
+//   });
+// }
 
 
 
@@ -207,7 +211,6 @@ function bindEventListeners() {
   handleCardClick();
   handleMoreInfoClick();
   handleMoreInfoCardClose();
-  handleDirectionClick();
 }
 
 
