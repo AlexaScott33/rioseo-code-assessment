@@ -1,8 +1,14 @@
 /* CUSTOM STYLES HERE */
 
+* {
+    font-family: 'M PLUS Rounded 1c', sans-serif;
+}
+
 .hidden {
     display: none !important;
 }
+
+
 
 /* HEADER STYLES */
 .header-container {
@@ -47,18 +53,50 @@
 
 .main-container {
     margin-top: 50px;
-}
-
-.initial-grey-display {
-    background-color:lightgray;
-    color: black;
-    text-align: center;
-    /* float: right; */
-    width: 100%;
+    display: flex;
     height: 100vh;
 }
 
+
+
+/* LIST STYLES */
+
+.list-wrap {
+    width: 50%;
+    overflow-y: auto;
+    height: 100%;
+}
+
+li {
+    list-style: none;
+    width: 90%;
+    margin: 10px auto;
+    border: 1px solid lightgrey;
+    box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.2);
+}
+
+.list-header {
+    overflow: hidden;
+}
+
+.list-truck-name {
+    float: left;
+}
+
+.list-miles {
+    float: right;
+}
+
+.truck-locator-element:hover {
+    cursor: pointer;
+}
+
+
+
+/* MAP STYLES */
+
 .map-wrap {
+    flex: 0 50%;
     float: right;
     width: 50%;
     height: 100%;
@@ -70,7 +108,20 @@
     height: 100%;
 }
 
+.initial-grey-display {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color:lightgray;
+    color: black;
+    text-align: center;
+    width: 100%;
+    height: 100vh;
+}
 
+
+
+/* MORE INFO STYLES */
 
 .more-info-wrap {
     position: absolute;
@@ -130,25 +181,3 @@
 .schedule {
     margin-left: 50px;
 }
-
-
-
-
-
-
-ul {
-    overflow: auto;
-}
-
-li {
-    list-style: none;
-}
-
-.truck-locator-element {
-    border: 1px solid black;
-}
-
-.truck-locator-element:hover {
-    cursor: pointer;
-}
-
