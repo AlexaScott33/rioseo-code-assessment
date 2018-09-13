@@ -10,6 +10,33 @@
 
 
 
+button:hover {
+    cursor: pointer;
+}
+
+.get-more-info {
+    font-size: 12px;
+    background-color: #494949;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 30px;
+    width: 40%;
+}
+
+.get-directions {
+    font-size: 12px;
+    background-color: #494949;
+    color: white;
+    border-radius: 5px;
+    padding: 5px 30px;
+    width: 40%;
+}
+
+.get-directions:hover {
+    color: white;
+    text-decoration: none;
+}
+
 /* HEADER STYLES */
 .header-container {
     display: inline-block;
@@ -71,8 +98,10 @@ li {
     list-style: none;
     width: 90%;
     margin: 10px auto;
+    padding: 20px 20px;
     border: 1px solid lightgrey;
-    box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    box-shadow: 10px 1px 10px rgba(0, 0, 0, 0.15);
 }
 
 .list-header {
@@ -85,6 +114,19 @@ li {
 
 .list-miles {
     float: right;
+}
+
+.list-truck-address {
+    margin-bottom: 0;
+}
+
+.list-display-message {
+    color: #1abb9c;
+}
+
+.list-phone {
+    display: inline-block;
+    color: orange;
 }
 
 .truck-locator-element:hover {
