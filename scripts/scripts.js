@@ -54,8 +54,6 @@ function windowResize() {
 }
 
 
-
-
 function render(res) {
   const storeList = generateTruckLocatorList(res);
   $('.truck-locator-list').html(storeList);
