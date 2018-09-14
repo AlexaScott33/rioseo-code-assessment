@@ -12,8 +12,42 @@ $(document).ready(function() {
   });
     
   bindEventListeners();
-  // DEMO
-  //   $('.map').attr('src', 'https://maps.googleapis.com/maps/api/staticmap?center=32.823943,-117.150259&zoom=13&scale=2&size=200x300&maptype=roadmap&format=png&visual_refresh=true&markers=size:small%7Ccolor:0xff0000%7Clabel:1%7C32.823943,-117.150259');
+
+  // functionality for mobile view
+  if ($(window).width() <= 480) {
+
+    $('.nav-container').addClass('hidden');
+    $('.header-container').addClass('hidden');
+    $('.mobile-nav').removeClass('hidden');
+    $('.mobile-button').removeClass('hidden');
+    $('.map-wrap').addClass('hidden');
+    
+    // listens for a click on the truck locator card
+    // hides the list and shows map
+    $('.truck-locator-list').on('click', '.truck-locator-element', function() {
+
+      $('.list-wrap').addClass('hidden');
+      $('.map-wrap').removeClass('hidden');
+
+      $('.show-map').addClass('orange-background');
+      $('.show-map').removeClass('orange-font');
+      $('.show-list').addClass('orange-font');
+      $('.show-list').removeClass('orange-background');
+    });
+
+    // listens for a click on the more info button
+    // hides the list and shows the map with overlay of details
+    $('.truck-locator-list').on('click', '.get-more-info', function(event) {
+
+      $('.list-wrap').addClass('hidden');
+      $('.map-wrap').removeClass('hidden');
+
+      $('.show-map').addClass('orange-background');
+      $('.show-map').removeClass('orange-font');
+      $('.show-list').addClass('orange-font');
+      $('.show-list').removeClass('orange-background');
+    });
+  }
 });
 
 
@@ -36,7 +70,6 @@ function generateTruckLocatorList(list) {
   let currDay;
   let displayStatusMessage;
   let closesAt;
-
 
   // set currDay to the element at index in weekArr
   for(let i=0; i < weekArr.length; i++) {
@@ -137,7 +170,7 @@ function handleCardClick() {
 
 // this function:
 // listens for a click of the more info button
-// gets the all the data for that specific truck
+// gets all the data for that specific truck
 // sets data to respected html element
 // removes the hidden class from .more-info-wrap
 function handleMoreInfoClick() {
@@ -190,10 +223,42 @@ function handleMoreInfoCardClose() {
   });
 }
 
+function handleMobileListClick() {
+  $('.show-list').on('click', function(event) {
+    event.preventDefault();
+    // console.log('list');
+
+    $('.map-wrap').addClass('hidden');
+    $('.list-wrap').removeClass('hidden');
+
+    $('.show-list').addClass('orange-background');
+    $('.show-list').removeClass('orange-font');
+    $('.show-map').addClass('orange-font');
+    $('.show-map').removeClass('orange-background');
+  });
+}
+
+function handleMobileMapClick() {
+  $('.show-map').on('click', function(event) {
+    event.preventDefault();
+    // console.log('map');
+
+    $('.list-wrap').addClass('hidden');
+    $('.map-wrap').removeClass('hidden');
+
+    $('.show-map').addClass('orange-background');
+    $('.show-map').removeClass('orange-font');
+    $('.show-list').addClass('orange-font');
+    $('.show-list').removeClass('orange-background');
+  });
+}
+
 
 
 function bindEventListeners() {
   handleCardClick();
   handleMoreInfoClick();
   handleMoreInfoCardClose();
+  handleMobileListClick();
+  handleMobileMapClick();
 }

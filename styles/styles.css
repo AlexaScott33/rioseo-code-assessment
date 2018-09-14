@@ -47,6 +47,26 @@
     color: black;
 }
 
+.mobile-nav {
+    background-color: #494949;
+    padding: 10px 5px;
+    /* position: fixed; */
+}
+
+.hamburger-icon {
+    width: 8%;
+    margin-left: 20px;
+}
+
+.rioseo-mobile-logo {
+    margin-left: 110px;
+}
+
+.locator-icon-mobile {
+    width: 8%;
+    margin-left: 125px;
+}
+
 
 
 /* BUTTON STYLES */
@@ -94,6 +114,21 @@ button:hover {
 .view-full-details:hover {
     color: white;
     text-decoration: none;
+}
+
+.mobile-button {
+    position: fixed;
+    bottom: 0;
+}
+
+.orange-background {
+    background-color: orange;
+    color: white;
+}
+
+.orange-font {
+    background-color: white;
+    color: orange;
 }
 
 
@@ -242,4 +277,44 @@ table {
 
 td + .schedule {
     padding-left: 50px;
+}
+
+
+/* MEDIA QUERIES */
+
+@media only screen and (max-width: 480px) {
+    .main-container {
+        margin-top: 25px;
+    }
+
+    .truck-locator-list {
+        padding: 0 0;
+    }
+
+    .list-wrap {
+        width: 100%;
+    }
+
+    .get-more-info {
+        padding: 5px 25px;
+        width: 48%;
+    }
+
+    .get-directions {
+        margin: 0 10px;
+    }
+
+    .map-wrap {
+        flex: none;
+        width: 100%;
+    }
+
+    .direction-icon {
+        margin-left: 25px;
+    }
+
+    .view-full-details {
+        margin: 0px 69px;
+        padding: 9px 44px;
+    }
 }
