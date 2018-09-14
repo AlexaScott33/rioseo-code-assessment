@@ -223,6 +223,10 @@ function handleMoreInfoCardClose() {
   });
 }
 
+// this function:
+// listens for a click on the list button on mobile device
+// hides the map and shows the list
+// changes color of background and font for both buttons
 function handleMobileListClick() {
   $('.show-list').on('click', function(event) {
     event.preventDefault();
@@ -238,6 +242,10 @@ function handleMobileListClick() {
   });
 }
 
+// this function:
+// listens for a click on the map button on mobile device
+// hides the list and shows the map
+// changes color of background and font for both buttons
 function handleMobileMapClick() {
   $('.show-map').on('click', function(event) {
     event.preventDefault();
