@@ -78,6 +78,7 @@ button:hover {
     font-size: 12px;
     background-color: #494949;
     color: white;
+    border: none;
     border-radius: 5px;
     padding: 5px 20px;
     /* width: 40%; */
@@ -107,6 +108,7 @@ button:hover {
     font-size: 12px;
     background-color: #494949;
     color: white;
+    border: none;
     border-radius: 5px;
     padding: 5px 30px;
 }
