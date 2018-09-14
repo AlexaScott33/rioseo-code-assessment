@@ -79,8 +79,8 @@ button:hover {
     background-color: #494949;
     color: white;
     border-radius: 5px;
-    padding: 5px 30px;
-    width: 40%;
+    padding: 5px 20px;
+    /* width: 40%; */
 }
 
 .close-card {
@@ -94,8 +94,8 @@ button:hover {
     background-color: #494949;
     color: white;
     border-radius: 5px;
-    padding: 5px 30px;
-    width: 40%;
+    padding: 5px 20px;
+    /* width: 40%; */
 }
 
 .get-directions:hover {
@@ -325,6 +325,7 @@ td + .schedule {
 
     .get-directions {
         margin: 0 10px;
+        padding: 5px 30px;
     }
 
     .map-wrap {
@@ -339,5 +340,23 @@ td + .schedule {
     .view-full-details {
         margin: 0px 69px;
         padding: 9px 44px;
+    }
+}
+
+@media only screen and (min-width: 2560px) {
+    .nav-container {
+        font-size: 25px;
+    }
+
+    .main-container {
+        justify-content: center;
+    }
+
+    .list-wrap {
+        width: 25%;
+    }
+
+    .more-info-card {
+        width: 50%;
     }
 }
