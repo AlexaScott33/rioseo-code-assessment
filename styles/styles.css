@@ -295,6 +295,14 @@ td + .schedule {
         width: 100%;
     }
 
+    .list-truck-name {
+        font-size: 18px;
+    }
+
+    .list-miles {
+        font-size: 12px;
+    }
+
     .get-more-info {
         padding: 5px 25px;
         width: 48%;
