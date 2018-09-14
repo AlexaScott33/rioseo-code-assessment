@@ -50,7 +50,9 @@
 .mobile-nav {
     background-color: #494949;
     padding: 10px 5px;
-    /* position: fixed; */
+    position: fixed;
+    top: 0;
+    z-index: 100;
 }
 
 .hamburger-icon {
@@ -81,7 +83,8 @@ button:hover {
     border: none;
     border-radius: 5px;
     padding: 5px 20px;
-    /* width: 40%; */
+    width: 45%;
+    text-align: center;
 }
 
 .close-card {
@@ -90,13 +93,19 @@ button:hover {
     float: right;
 }
 
+.button-header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .get-directions {
     font-size: 12px;
     background-color: #494949;
     color: white;
     border-radius: 5px;
     padding: 5px 20px;
-    /* width: 40%; */
+    width: 45%;
+    text-align: center;
 }
 
 .get-directions:hover {
@@ -111,6 +120,10 @@ button:hover {
     border: none;
     border-radius: 5px;
     padding: 5px 30px;
+    margin: 0 auto;
+    display: block;
+    width: 90%;
+    text-align: center;
 }
 
 .view-full-details:hover {
@@ -300,10 +313,6 @@ td + .schedule {
 /* MEDIA QUERIES */
 
 @media only screen and (max-width: 480px) {
-    .main-container {
-        margin-top: 25px;
-    }
-
     .truck-locator-list {
         padding: 0 0;
     }
@@ -340,7 +349,6 @@ td + .schedule {
     }
 
     .view-full-details {
-        margin: 0px 69px;
         padding: 9px 44px;
     }
 }

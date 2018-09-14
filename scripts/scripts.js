@@ -10,10 +10,13 @@ $(document).ready(function() {
     render(response);
     // console.log(response);
   });
-    
+  
+  windowResize();
   bindEventListeners();
 
-  // functionality for mobile view
+});
+
+function windowResize() {
   if ($(window).width() <= 480) {
 
     $('.nav-container').addClass('hidden');
@@ -48,7 +51,9 @@ $(document).ready(function() {
       $('.show-list').removeClass('orange-background');
     });
   }
-});
+}
+
+
 
 
 function render(res) {
@@ -104,7 +109,7 @@ function generateTruckLocatorList(list) {
           <p class="list-display-message">${displayStatusMessage}</p>
         <img src="assets/phone-icon.png">
         <p class="list-phone">123-456-7890</p>
-        <div>
+        <div class="button-header">
           <a
             class="get-directions" href="https://www.google.com/maps/dir/${truck.latitude},${truck.longitude}" target="_blank"
             data-latitude="${truck.latitude}"
@@ -261,6 +266,10 @@ function handleMobileMapClick() {
   });
 }
 
+function handleWindowResize() {
+  $(window).resize(windowResize);
+}
+
 
 
 function bindEventListeners() {
@@ -269,4 +278,5 @@ function bindEventListeners() {
   handleMoreInfoCardClose();
   handleMobileListClick();
   handleMobileMapClick();
+  handleWindowResize();
 }
